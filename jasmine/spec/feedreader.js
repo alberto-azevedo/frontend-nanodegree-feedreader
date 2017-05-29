@@ -110,7 +110,9 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        var oldFeed, newFeed = '';
+        var oldFeed = 'oldFeed'; // note oldFeed and newFeed are diferents!
+		var newFeed = 'newFeed';
+		
         beforeEach(function(done) {
             // note: loadFeed(0) done by app.js init();
             oldFeed = $('.feed').html();
