@@ -97,9 +97,8 @@ $(function() {
             });
         });
 
-        it('after loadFeed there is at least a single .entry element within the .feed container', function(done) {
+        it('after loadFeed there is at least a single .entry element within the .feed container', function() {
             expect($('.feed .entry').length).toBeGreaterThan(0);
-            done();
         });
     });
     /* Write a new test suite named "New Feed Selection" */
@@ -110,19 +109,22 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        var oldFeed = 'oldFeed'; // note oldFeed and newFeed are diferents!
-        var newFeed = 'newFeed';
+        var oldFeed;
+        var newFeed;
 		
         beforeEach(function(done) {
-            // note: loadFeed(0) done by app.js init();
-            oldFeed = $('.feed').html();
-            loadFeed(1, function() { // load new feed
-                done();
-            });
+			// load 1st collection of feeds
+            loadFeed(1,function() {
+			oldFeed = $('.feed').html(); // save it			
+			});
+			// load 2nd collection of feeds
+            loadFeed(3,function() {
+			newFeed = $('.feed').html(); // save new one
+			done();			
+			});
         });
 
         it('new feed is really loaded', function(done) {
-            newFeed = $('.feed').html();
             expect(newFeed).not.toEqual(oldFeed); // ensure reload
             done();
         });
