@@ -111,17 +111,17 @@ $(function() {
          */
         var oldFeed;
         var newFeed;
-		
+
         beforeEach(function(done) {
-			// load 1st collection of feeds
-            loadFeed(1,function() {
-			oldFeed = $('.feed').html(); // save it			
-			});
-			// load 2nd collection of feeds
-            loadFeed(3,function() {
-			newFeed = $('.feed').html(); // save new one
-			done();			
-			});
+            // load 1st collection of feeds
+            loadFeed(1, function() {
+                oldFeed = $('.feed').html(); // save it	
+                // load 2nd collection of feeds
+                loadFeed(3, function() {
+                    newFeed = $('.feed').html(); // save new one
+                    done();
+                });
+            });
         });
 
         it('new feed is really loaded', function(done) {
